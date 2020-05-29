@@ -23,6 +23,7 @@ class Todoinput extends Component {
             </div>
             <button
               type="submit"
+              disabled={item ? false : true}
               className={
                 edititem
                   ? "btn btn-success btn-block text-uppercase my-3"
