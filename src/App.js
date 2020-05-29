@@ -20,15 +20,12 @@ class App extends Component {
       title: this.state.item,
     };
     const updateditem = [...this.state.items, newitem];
-    this.setState(
-      {
-        items: updateditem,
-        item: "",
-        edititem: false,
-        id: uuid(),
-      },
-      console.log(this.state)
-    );
+    this.setState({
+      items: updateditem,
+      item: "",
+      edititem: false,
+      id: uuid(),
+    });
   };
   clearlist = () => {
     this.setState({ items: [] });
@@ -37,7 +34,16 @@ class App extends Component {
     const list = this.state.items.filter((data) => data.id !== id);
     this.setState({ items: list });
   };
-  handleEdit = (id) => {};
+  handleEdit = (id) => {
+    const list = this.state.items.filter((data) => data.id !== id);
+    const selected = this.state.items.find((data) => data.id === id);
+    this.setState({
+      items: list,
+      item: selected.title,
+      id: id,
+      edititem: true,
+    });
+  };
   render() {
     return (
       <div className="container">

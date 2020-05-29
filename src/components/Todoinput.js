@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class Todoinput extends Component {
   render() {
-    const { item, handleChange, handleSubmit } = this.props;
+    const { item, handleChange, handleSubmit, edititem } = this.props;
+
     return (
       <div className="text-center text-capitalize">
         <h1>todo input</h1>{" "}
@@ -22,9 +23,13 @@ class Todoinput extends Component {
             </div>
             <button
               type="submit"
-              className="btn btn-primary btn-block text-uppercase my-3"
+              className={
+                edititem
+                  ? "btn btn-success btn-block text-uppercase my-3"
+                  : "btn btn-primary btn-block text-uppercase my-3"
+              }
             >
-              Add item
+              {edititem ? "edit item" : "add item"}
             </button>
           </div>
         </form>
