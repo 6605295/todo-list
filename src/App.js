@@ -30,8 +30,13 @@ class App extends Component {
       console.log(this.state)
     );
   };
-  clearlist = () => {};
-  handleDelete = (id) => {};
+  clearlist = () => {
+    this.setState({ items: [] });
+  };
+  handleDelete = (id) => {
+    const list = this.state.items.filter((data) => data.id !== id);
+    this.setState({ items: list });
+  };
   handleEdit = (id) => {};
   render() {
     return (
@@ -44,7 +49,12 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               edititem={this.state.edititem}
             />
-            <Todolist />
+            <Todolist
+              items={this.state.items}
+              clearlist={this.clearlist}
+              handleDelete={this.handleDelete}
+              handleEdit={this.handleEdit}
+            />
           </div>
         </div>
       </div>
